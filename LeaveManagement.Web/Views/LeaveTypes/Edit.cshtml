@@ -1,0 +1,46 @@
+﻿@model LeaveManagement.Web.Models.LeaveTypeViewModel
+
+@{
+   ViewData["Title"] = "Edit List Page";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Edit</title>
+</head>
+<body>
+
+<h4>LeaveType</h4>
+<hr />
+<div class="row">
+    <div class="col-ld-1"/>
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DefaultDays" class="control-label"></label>
+                <input asp-for="DefaultDays" class="form-control" />
+                <span asp-validation-for="DefaultDays" class="text-danger"></span>
+            </div>
+            <input type="hidden" asp-for="Id" />
+            <br/>
+            <div class="form-group">
+                 <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                 &nbsp;
+                <input type="submit" value="Save Changes" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
