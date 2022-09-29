@@ -1,6 +1,8 @@
 using LeaveManagement.Web.Configuration;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Data.Employee;
+using LeaveManagement.Web.IRepository;
+using LeaveManagement.Web.Repository;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,10 +17,21 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+#region DI Services
+
+builder.Services.AddScoped( typeof(IGenericRepository<>),typeof(GenericRepository<>) );
+builder.Services.AddScoped<ILeaveTypesRepository, LeaveTypesRepository>();
+
+
+
+#endregion
+
 #region Added AutoMapper Service
 builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
 
 #endregion
+
+
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
