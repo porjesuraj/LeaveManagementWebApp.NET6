@@ -48,7 +48,9 @@ namespace LeaveManagement.Web.Repository
                 return null;
             var result =  await _context.Set<T>().FindAsync(id);
 
+#pragma warning disable CS8603 // Possible null reference return.
             return result ?? null;
+#pragma warning restore CS8603 // Possible null reference return.
         }
 
         public async Task<int> UpdateAsync(int? id, T entity)
