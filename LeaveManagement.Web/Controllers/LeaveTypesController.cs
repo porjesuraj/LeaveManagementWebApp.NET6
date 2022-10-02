@@ -19,10 +19,13 @@ namespace LeaveManagement.Web.Controllers
     {
         private readonly IMapper _mapper;
         private readonly ILeaveTypesRepository _leaveTypesRepository;
-        public LeaveTypesController(ILeaveTypesRepository leaveTypesRepository, IMapper mapper)
+
+        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+        public LeaveTypesController(ILeaveTypesRepository leaveTypesRepository, IMapper mapper, ILeaveAllocationRepository leaveAllocationRepository)
         {
             _mapper = mapper;
             _leaveTypesRepository = leaveTypesRepository;
+            _leaveAllocationRepository = leaveAllocationRepository;
         }
 
         // GET: LeaveTypes
@@ -157,5 +160,14 @@ namespace LeaveManagement.Web.Controllers
         }
 
 
+        [HttpPost, ActionName("AllocateLeave")]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> AllocateLeave(int id)
+        {
+            await _leaveAllocationRepository.LeaveAllocation(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }
