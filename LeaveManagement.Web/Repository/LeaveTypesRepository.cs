@@ -3,7 +3,7 @@ using LeaveManagement.Web.IRepository;
 
 namespace LeaveManagement.Web.Repository
 {
-    public class LeaveTypesRepository : GenericRepository<LeaveType>,ILeaveTypesRepository
+    public class LeaveTypesRepository : GenericRepository<LeaveType>, ILeaveTypesRepository
     {
         private readonly ApplicationDbContext _context;
         public LeaveTypesRepository(ApplicationDbContext context) : base(context)
@@ -13,8 +13,8 @@ namespace LeaveManagement.Web.Repository
 
         public bool LeaveTableExist()
         {
-            return  _context.LeaveTypes != null;
-           
+            return _context.LeaveTypes != null;
+
 
         }
     }

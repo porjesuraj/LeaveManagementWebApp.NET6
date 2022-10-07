@@ -20,13 +20,18 @@ builder.Services.AddDefaultIdentity<Employee>(options => options.SignIn.RequireC
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
 #region DI Services
+
+builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddTransient<IEmailSender>(options => new EmailSender("localhost",25,"no-reply@leavemanagement.com"));
 
 builder.Services.AddScoped( typeof(IGenericRepository<>),typeof(GenericRepository<>) );
 builder.Services.AddScoped<ILeaveTypesRepository, LeaveTypesRepository>();
 builder.Services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
+builder.Services.AddScoped<ILeaveRequestRepository, LeaveRequestRepository>();
+
 
 
 

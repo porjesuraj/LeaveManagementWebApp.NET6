@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/all.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/LeaveManagement.Web.styles.css" asp-append-version="true" />
 </head>
@@ -29,10 +30,18 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
-                        <li>
-                            <a class="nav-link text-light" asp-area="" asp-controller="" asp-action="" >Apply Leave</a>
+                        @if (User.IsInRole(StringConstants.USER_ROLE))
+                        {
+                              <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="LeaveRequests" asp-action="Create" >Apply Leave</a>
                        </li>
 
+                        <li>
+                            <a class="nav-link text-light" asp-area="" asp-controller="LeaveRequests" asp-action="MyLeave" >My Leave</a>
+                       </li>
+                            
+                        }
+                      
                         @if (User.IsInRole(StringConstants.ADMIN_ROLE))
                         {
                          <li>
@@ -44,9 +53,8 @@
                              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Leave Menu </a>
                              <ul class="dropdown-menu dropdown-menu-dark" title="ASP">
                               <li><a class="dropdown-item" asp-controller="LeaveTypes" asp-action="Index" >Leave Types</a></li>
-                              <li><a class="dropdown-item" asp-controller="LeaveTypes" asp-action="" >Leave Allocation</a></li>
-                              <li><a class="dropdown-item" asp-controller="LeaveTypes" asp-action="" >Leave Requests</a></li>
-                              <li><a class="dropdown-item" asp-controller="Leaves" asp-action="" >Employee Management</a></li>
+                              <li><a class="dropdown-item" asp-controller="LeaveRequests" asp-action="Index" >Leave Requests</a></li>
+
                             </ul>
                          </li>  
                         }
@@ -78,12 +86,16 @@
     <script src="~/lib/sweetalert/sweetalert.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     
     <script>
 
         $(function() 
         {
          $('.table').DataTable();
+         $( ".datepicker" ).datepicker({
+             dateFormat:"yy-mm-dd"
+         });
         });
     </script>
     
