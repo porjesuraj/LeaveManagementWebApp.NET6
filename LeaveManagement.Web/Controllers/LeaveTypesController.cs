@@ -110,7 +110,13 @@ namespace LeaveManagement.Web.Controllers
             {
                 try
                 {
-                    var leaveType = _mapper.Map<LeaveType>(leaveTypeVM);
+                    var leaveType = await _leaveTypesRepository.GetAsync(id);
+
+                    if (leaveType == null)
+                        return NotFound();
+
+
+                     _mapper.Map(leaveTypeVM,leaveType);
 
                    await _leaveTypesRepository.UpdateAsync(id, leaveType);                
                 }

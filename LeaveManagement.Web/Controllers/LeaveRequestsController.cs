@@ -17,11 +17,13 @@ namespace LeaveManagement.Web.Controllers
     public class LeaveRequestsController : Controller
     {
         private readonly ApplicationDbContext _context;
-        private ILeaveRequestRepository _leaveRequestRepository;
-        public LeaveRequestsController(ApplicationDbContext context, ILeaveRequestRepository leaveRequestRepository)
+        private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly ILogger<LeaveRequestsController> _logger;
+        public LeaveRequestsController(ApplicationDbContext context, ILeaveRequestRepository leaveRequestRepository, ILogger<LeaveRequestsController> logger)
         {
             _context = context;
             _leaveRequestRepository = leaveRequestRepository;
+            _logger = logger;
         }
 
         public async Task<IActionResult> MyLeave()
@@ -65,7 +67,7 @@ namespace LeaveManagement.Web.Controllers
             }
             catch (Exception ex)
             {
-
+                _logger.LogError(ex, "Error Approving Request");
                 ModelState.AddModelError(string.Empty, StringConstants.GENERIC_ERROR_MESSAGE + ex.Message);
             }
 
@@ -113,6 +115,8 @@ namespace LeaveManagement.Web.Controllers
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Error Creating Leave Request");
+
                 ModelState.AddModelError(string.Empty, StringConstants.GENERIC_ERROR_MESSAGE);
                 
             }

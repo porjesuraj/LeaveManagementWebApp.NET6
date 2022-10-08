@@ -65,6 +65,7 @@ namespace LeaveManagement.Web.Repository
             if(id != null)
             {
                 _context.Update(entity);
+                _context.Entry(entity).State = EntityState.Modified;
                 return await _context.SaveChangesAsync();
             }
 

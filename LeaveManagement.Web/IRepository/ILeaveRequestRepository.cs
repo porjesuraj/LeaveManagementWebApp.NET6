@@ -11,7 +11,7 @@ namespace LeaveManagement.Web.IRepository
         Task<EmployeeLeaveRequestViewModel> GetLeaveRequestDetails();
 
         Task<LeaveRequestForEmployeeViewModel> GetLeaveRequestAsync(int? id);
-        Task<List<LeaveRequest>> GetAllAsync(string employeeId);
+        Task<List<LeaveRequestForEmployeeViewModel>> GetAllAsync(string employeeId);
 
         Task<AdminLeaveRequestViewViewModel> GetAdminLeaveRequestList();
 

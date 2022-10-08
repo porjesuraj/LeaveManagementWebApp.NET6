@@ -10,13 +10,15 @@ namespace LeaveManagement.Web.Models
     {
         [Required]
         [Display(Name ="Start Date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date)]
 
         public DateTime? StartTime { get; set; }
 
         [Required]
         [Display(Name = "End Date")]
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yy}")]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
+        [DataType(DataType.Date)]
 
         public DateTime? EndTime { get; set; }
 
