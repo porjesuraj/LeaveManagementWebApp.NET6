@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Models;
 using LeaveManagement.Web.IRepository;
-using LeaveManagement.Web.Constants;
+using LeaveManagement.Common.Constants;
 using Microsoft.AspNetCore.Authorization;
 
 namespace LeaveManagement.Web.Controllers

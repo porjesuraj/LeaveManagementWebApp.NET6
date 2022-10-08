@@ -10,7 +10,7 @@ using AutoMapper;
 using LeaveManagement.Web.Models;
 using LeaveManagement.Web.IRepository;
 using Microsoft.AspNetCore.Authorization;
-using LeaveManagement.Web.Constants;
+using LeaveManagement.Common.Constants;
 
 namespace LeaveManagement.Web.Controllers
 {

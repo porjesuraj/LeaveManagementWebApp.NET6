@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using LeaveManagement.Web.Constants;
+using LeaveManagement.Common.Constants;
 using LeaveManagement.Web.Data;
 using LeaveManagement.Web.Data.Employee;
 using LeaveManagement.Web.IRepository;

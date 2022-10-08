@@ -1,7 +1,6 @@
 ﻿using LeaveManagement.Web.Configuration.Entities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using LeaveManagement.Web.Models;
 
 namespace LeaveManagement.Web.Data
 {
@@ -30,12 +29,12 @@ namespace LeaveManagement.Web.Data
 
                 entry.Entity.DateModified = DateTime.Now;
 
-                if(entry.State == EntityState.Added)
+                if (entry.State == EntityState.Added)
                 {
                     entry.Entity.DateCreated = DateTime.Now;
                 }
             }
-            return base.SaveChangesAsync(cancellationToken);    
+            return base.SaveChangesAsync(cancellationToken);
         }
 
         public DbSet<LeaveType>? LeaveTypes { get; set; }
